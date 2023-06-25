@@ -6,7 +6,7 @@ interface PaginationCountProps {
   setPageSize: (pageSize: number) => void;
 }
 
-const paginationOptions = [1, 2, 3];
+const paginationOptions = [5, 10, 25];
 
 const PaginationCount = ({ pageSize, setPageSize }: PaginationCountProps) => {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ const PaginationCount = ({ pageSize, setPageSize }: PaginationCountProps) => {
               <div
                 key={size}
                 className="pagination-count-option"
-                onClick={(e) => {
+                onClick={() => {
                   setPageSize(Number(size));
                   setOpen((prev) => !prev);
                 }}

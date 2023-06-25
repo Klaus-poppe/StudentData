@@ -21,13 +21,22 @@ const Chart = ({ students }: ChartProps) => {
 
   return (
     <div>
-      <XYPlot height={300} width={500} xType="ordinal">
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
-        <LineMarkSeries data={data} />
-      </XYPlot>
+      <div
+        style={{
+          width: "clamp(400px , 100% , 1300px)",
+          overflowX: "scroll",
+          overflowY: "hidden",
+          height: "auto",
+        }}
+      >
+        <XYPlot height={300} width={1300} xType="ordinal">
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <LineMarkSeries data={data} />
+        </XYPlot>
+      </div>
     </div>
   );
 };

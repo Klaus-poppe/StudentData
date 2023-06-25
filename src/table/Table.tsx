@@ -5,7 +5,7 @@ import {
   useSortBy,
   useGlobalFilter,
 } from "react-table";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { GlobalFilter } from "./GlobalSearch";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { Pagination } from "./Pagination";
@@ -67,10 +67,6 @@ const Table = ({ students }: TableProps) => {
     useSortBy,
     usePagination
   );
-
-  useEffect(() => {
-    setPageSize(1);
-  }, []);
 
   return (
     <div className="table-container">
