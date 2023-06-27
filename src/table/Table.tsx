@@ -1,43 +1,37 @@
-import {
-  Column,
-  useTable,
-  usePagination,
-  useSortBy,
-  useGlobalFilter,
-} from "react-table";
-import { useMemo } from "react";
+import { TableInstance } from "react-table";
+
 import { GlobalFilter } from "./GlobalSearch";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { Pagination } from "./Pagination";
 import PaginationCount from "./PaginationCount";
 
 interface TableProps {
-  students: Student[];
+  table: TableInstance<Student>;
 }
 
-const Table = ({ students }: TableProps) => {
-  const data = useMemo(() => students, [students]);
-  const columns = useMemo<Column<Student>[]>(
-    () => [
-      {
-        Header: "ID",
-        accessor: "id",
-      },
-      {
-        Header: "Name",
-        accessor: "name",
-      },
-      {
-        Header: "Age",
-        accessor: "age",
-      },
-      {
-        Header: "Created  on",
-        accessor: "created_at",
-      },
-    ],
-    []
-  );
+const Table = ({ table }: TableProps) => {
+  // const data = useMemo(() => students, [students]);
+  // const columns = useMemo<Column<Student>[]>(
+  //   () => [
+  //     {
+  //       Header: "ID",
+  //       accessor: "id",
+  //     },
+  //     {
+  //       Header: "Name",
+  //       accessor: "name",
+  //     },
+  //     {
+  //       Header: "Age",
+  //       accessor: "age",
+  //     },
+  //     {
+  //       Header: "Created  on",
+  //       accessor: "created_at",
+  //     },
+  //   ],
+  //   []
+  // );
 
   const {
     getTableProps,
@@ -57,16 +51,7 @@ const Table = ({ students }: TableProps) => {
     preGlobalFilteredRows,
     setGlobalFilter,
     // visibleColumns,
-  } = useTable(
-    {
-      columns,
-      data,
-      initialState: { pageIndex: 0 }, // Pass our hoisted table state
-    },
-    useGlobalFilter,
-    useSortBy,
-    usePagination
-  );
+  } = table;
 
   return (
     <div className="table-container">

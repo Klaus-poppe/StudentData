@@ -8,16 +8,28 @@ import {
   YAxis,
   LineMarkSeries,
 } from "react-vis";
+import { useEffect, useState } from "react";
+import { Row } from "react-table";
 
 interface ChartProps {
-  students: Student[];
+  page: Row<Student>[];
 }
 
-const Chart = ({ students }: ChartProps) => {
-  const data = students.map((student) => ({
-    x: student.name,
-    y: student.age,
-  }));
+const Chart = ({ page }: ChartProps) => {
+  const [data, setData] = useState(
+    page.map((current: any) => ({
+      x: current.original.name,
+      y: current.original.age,
+    }))
+  );
+
+  useEffect(() => {
+    const res = page.map((current: any) => ({
+      x: current.original.name,
+      y: current.original.age,
+    }));
+    setData(res);
+  }, [page]);
 
   return (
     <div>
