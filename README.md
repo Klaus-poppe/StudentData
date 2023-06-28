@@ -27,8 +27,6 @@ Frontend for viewing student data in tabular and chart form.
 
 ## Technologies Used
 
-List the main technologies, frameworks, libraries, or tools used in your project. For example:
-
 - React
 - React-vis for charts
 - React-tables for the table
